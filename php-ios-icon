@@ -50,6 +50,11 @@ $image_base = gradient(
 
 imagecopy($image_base, $image_emoji, (($image_width - $emoji_width) / 2), (($image_height - $emoji_width) / 2), 0, 0, $emoji_width, $emoji_height);
 
+if (!file_exists(__DIR__ . '/output')) {
+    mkdir(__DIR__ . '/output');
+    chmod(__DIR__ . '/output', 0777);
+}
+
 foreach ($sizes as $name => $size) {
     $output = imagecreatetruecolor($size, $size);
 

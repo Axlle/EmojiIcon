@@ -1,0 +1,62 @@
+#!/usr/bin/php
+
+<?php
+
+require_once __DIR__ . '/hex2rgb.php';
+require_once __DIR__ . '/gradient.php';
+require_once __DIR__ . '/emoji.php';
+
+$sizes = [
+    'Icon-60@2x'       => 120,
+    'Icon-60@3x'       => 180,
+    'Icon-76'          => 76,
+    'Icon-76@2x'       => 152,
+    'Icon-83.5@2x'     => 167,
+    'Icon-Small-40'    => 40,
+    'Icon-Small-40@2x' => 80,
+    'Icon-Small-40@3x' => 120,
+    'Icon-Small'       => 29,
+    'Icon-Small@2x'    => 58,
+    'Icon-Small@3x'    => 87
+];
+
+$arg_emoji = $argv[1]; // 💩
+$arg_color_top = $argv[2]; // 4F2F92
+$arg_color_bottom = $argv[3]; // E2068C
+
+$emoji_value = strtolower(str_replace('\u', '', utf8_to_unicode($arg_emoji)));
+
+$image_width = $image_height = 180;
+$emoji_width = $emoji_height = 100;
+
+$color_top = hex2rgb($arg_color_top);
+$color_bottom = hex2rgb($arg_color_bottom);
+
+$data = file_get_contents('https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/' . $emoji_value . '.png');
+
+$image_base = imagecreatetruecolor($image_width, $image_height);
+$image_emoji = imagecreatefromstring($data);
+
+imagealphablending($image_emoji, false);
+imagesavealpha($image_emoji, true);
+
+imagecopyresampled($image_emoji, $image_emoji, 0, 0, 0, 0, $emoji_width, $emoji_height, 160, 160);
+
+$image_base = gradient(
+    $image_base, $image_width, $image_height, 
+    $color_top[0], $color_top[1], $color_top[2], 
+    $color_bottom[0], $color_bottom[1], $color_bottom[2]
+);
+
+imagecopy($image_base, $image_emoji, (($image_width - $emoji_width) / 2), (($image_height - $emoji_width) / 2), 0, 0, $emoji_width, $emoji_height);
+
+foreach ($sizes as $name => $size) {
+    $output = imagecreatetruecolor($size, $size);
+
+    imagecopyresampled($output, $image_base, 0, 0, 0, 0, $size, $size, $image_width, $image_height);
+
+    imagepng($output, 'output/' . $name . '.png');
+    imagedestroy($output);
+}
+
+imagedestroy($image_base);

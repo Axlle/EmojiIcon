@@ -164,7 +164,7 @@ class EmojiIcon
             $dst_x, $dst_y, 0, 0, $this->emoji_size, $this->emoji_size);
 
         foreach ($this->sizes as $name => $size) {
-            echo self::outputToCli('Creating ' . $name, 'NOTE');
+            echo self::outputToCli('* ' . $name, 'NOTE');
 
             $icon = $this->createIcon($image_base, $size);
 
@@ -174,7 +174,7 @@ class EmojiIcon
             imagedestroy($icon);
         }
 
-        echo self::outputToCli('Complete!', 'NOTE');
+        echo self::outputToCli('Complete!', 'SUCCESS');
         echo self::outputToCli('Output directory: ' . $this->output_directory, 'NOTE');
 
         shell_exec('open ' . $this->output_directory);

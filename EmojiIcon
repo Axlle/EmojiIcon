@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/EmojiIcon.php';
+
+$ei = new EmojiIcon\EmojiIcon();
+
+$ei->setEmoji($argv[1]);
+
+if (isset($argv[2], $argv[3])) {
+    $ei->setGradient($argv[2], $argv[3]);
+}
+if (isset($argv[4])) {
+    $ei->setDirectory($argv[4]);
+}
+
+$ei->generate();

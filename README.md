@@ -1,10 +1,26 @@
-php-ios-icon
-========
+EmojiIcon
+=========
 
 ## Usage
 
+### Basic
+
 ```bash
-$ php php-ios-icon 💩 4f2f92 e2068c
+$ php EmojiIcon 💩
+```
+
+### Setting a gradient
+
+```bash
+$ php EmojiIcon 💩 4f2f92 e2068c
+```
+
+### Output directory
+
+Directory must be writable.
+
+```bash
+$ php EmojiIcon 💩 4f2f92 e2068c ~/Desktop
 ```
 
 ## Licence

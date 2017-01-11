@@ -24,7 +24,7 @@ $arg_emoji = $argv[1]; // 💩
 $arg_color_top = $argv[2]; // 4F2F92
 $arg_color_bottom = $argv[3]; // E2068C
 
-$emoji_value = strtolower(str_replace('\u', '', utf8_to_unicode($arg_emoji)));
+$emoji_value = strtolower(str_replace('\u', '', dechex(utf8_to_unicode($arg_emoji))));
 
 $image_width = $image_height = 180;
 $emoji_width = $emoji_height = 100;

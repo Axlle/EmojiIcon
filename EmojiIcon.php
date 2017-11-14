@@ -19,17 +19,24 @@ class EmojiIcon
      * @var array
      */
     protected $sizes = [
-    'Icon-60@2x' => 120,
-        'Icon-60@3x' => 180,
-        'Icon-76' => 76,
-        'Icon-76@2x' => 152,
-        'Icon-83.5@2x' => 167,
-        'Icon-Small-40' => 40,
-        'Icon-Small-40@2x' => 80,
-        'Icon-Small-40@3x' => 120,
-        'Icon-Small' => 29,
-        'Icon-Small@2x' => 58,
-        'Icon-Small@3x' => 87,
+        'AppIcon-20@2x' => 20 * 2,
+        'AppIcon-20@3x' => 20 * 3,
+        'AppIcon-29@2x' => 29 * 2,
+        'AppIcon-29@3x' => 29 * 3,
+        'AppIcon-40@2x' => 40 * 2,
+        'AppIcon-40@3x' => 40 * 3,
+        'AppIcon-60@2x' => 60 * 2,
+        'AppIcon-60@3x' => 60 * 3,
+        'AppIcon-20~ipad' => 20,
+        'AppIcon-20@2x~ipad' => 20 * 2,
+        'AppIcon-29~ipad' => 29,
+        'AppIcon-29@2x~ipad' => 29 * 2,
+        'AppIcon-40~ipad' => 40,
+        'AppIcon-40@2x~ipad' => 40 * 2,
+        'AppIcon-76~ipad' => 76,
+        'AppIcon-76@2x~ipad' => 76 * 2,
+        'AppIcon-83.5@2x~ipad' => 83.5 * 2,
+        'AppIcon-256' => 256,
     ];
 
     /**
